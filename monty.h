@@ -55,6 +55,8 @@ extern char **op_value;
 
 
 
+/******************** ERROR MESSAGES ***********************/
+int malloc_failed(void);
 
 
 
