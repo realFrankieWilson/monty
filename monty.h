@@ -57,7 +57,10 @@ extern char **op_value;
 
 /******************** ERROR MESSAGES ***********************/
 int malloc_failed(void);
-
+int error_usage(void);
+int file_open_error(char *);
+int unknown_operator(char *, unsigned int);
+int no_int_error(unsigned int);
 
 
 
