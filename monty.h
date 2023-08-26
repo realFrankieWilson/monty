@@ -9,9 +9,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 
 
+
+/***************** MACROS *************************************/
+#define DEL "\t\n"
 
 /******************** STRUCTURES DECLARATIONS*******************
  * struct stac_s -> doubly linked list representation of a stack
@@ -28,6 +34,24 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
+
+
+/**
+ * struct global_rep -> Global representation
+ * @data: integer
+ * @prev_st: points to the previous element of the stack (or queue)
+ * @next_st: points to the next element of the stack (or queue)
+ * @flag_q: checks for queue
+ * @data_ptr: ....
+ */
+typedef struct global_s
+{
+	char *data_ptr;
+	FILE *f_handler;
+	char *monty_line;
+	int data_string;
+} global_rep;
 
 
 /**
@@ -47,21 +71,19 @@ typedef struct instruction_s
 
 
 /******************* GLOBAL OPCODES **********************/
-extern char **op_value;
+extern global_rep global;
 
 
 /******************** CODE FUNCTIONS ***********************/
-
-
+int op_select_fun(char *, stack_t **, unsigned int, FILE *);
+void push_value(stack_t **, unsigned int);
+void addtp(stack_t **, int);
+void addlst(stack_t **, int);
 
 
 /******************** ERROR MESSAGES ***********************/
 int malloc_failed(void);
-int error_usage(void);
-int file_open_error(char *);
-int unknown_operator(char *, unsigned int);
-int no_int_error(unsigned int);
-
+void free_stack(stack_t *);
 
 
 #endif /*MONTY*/
