@@ -79,7 +79,10 @@ int op_select_fun(char *, stack_t **, unsigned int, FILE *);
 void push_value(stack_t **, unsigned int);
 void addtp(stack_t **, int);
 void addlst(stack_t **, int);
-
+void print_stack(stack_t **stack, unsigned int line_number);
+void print_top(stack_t **stack, unsigned int line_number);
+void printTopC(stack_t **stack, unsigned int line_number);
+void printTops(stack_t **stack, unsigned int line_number);
 
 /******************** ERROR MESSAGES ***********************/
 int malloc_failed(void);
