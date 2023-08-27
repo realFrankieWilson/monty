@@ -20,7 +20,7 @@ void addmath(stack_t **stack, unsigned int line_num2)
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_num2);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	ptr_node = *stack;
@@ -46,7 +46,7 @@ void submath(stack_t **stack, unsigned int line_num2)
 		ptr_node = ptr_node->next;
 		counter++;
 	}
-	if (len < 2)
+	if (counter < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_num2);
 		fclose(global.f_handler);
@@ -68,7 +68,7 @@ void submath(stack_t **stack, unsigned int line_num2)
  */
 void mulmath(stack_t **stack, unsigned int line_num2)
 {
-	stack_ t *ptr_node;
+	stack_t *ptr_node;
 	int mult, counter = 0;
 
 	ptr_node = *stack;
@@ -112,7 +112,7 @@ void divmath(stack_t **stack, unsigned int line_num2)
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_num2);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	ptr_node = *stack;
@@ -125,7 +125,7 @@ void divmath(stack_t **stack, unsigned int line_num2)
 		exit(EXIT_FAILURE);
 	}
 	div_v = ptr_node->next->n / ptr_node->n;
-	ptr_node->next->n = div;
+	ptr_node->next->n = div_v;
 	*stack = ptr_node->next;
 	free(ptr_node);
 }
