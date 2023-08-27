@@ -1,19 +1,22 @@
 #include "monty.h"
+
 /**
- * print_stack - print the stack like pall function
- * @stack: pointer to the mem direction of stack
- * @line_number: Number of actual line
+ * pall -> print the stack like pall function
+ * @stack_ptr: pointer to the mem direction of stack
+ * @l_num: Number of actual line
+ *
+ * Return: Nothing
  */
-void print_stack(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack_ptr, unsigned int l_num)
 
 {
 	stack_t *display_node = NULL;
 
-	(void)line_number;
+	(void)l_num;
 
-	if (!(stack == NULL || *stack == NULL))
+	if (!(stack_ptr == NULL || *stack_ptr == NULL))
 	{
-		display_node = *stack;
+		display_node = *stack_ptr;
 		while (display_node)
 		{
 			printf("%d\n", display_node->n);
@@ -22,64 +25,76 @@ void print_stack(stack_t **stack, unsigned int line_number)
 	}
 }
 
+
+
 /**
- * print_top - print the top element (pint)
- * @stack: pointer to the mem location of stack
- * @line_number: Number of actual line
+ * pint -> print the top element (pint)
+ * @stack_ptr: pointer to the mem location of stack
+ * @l_num: Number of actual line
+ *
+ * Return: Nothing
  */
-void print_top(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack_ptr, unsigned int l_num)
 {
 	int top = 0;
 
-	if (stack == NULL || *stack == NULL)
+	if (stack_ptr == NULL || *stack_ptr == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", l_num);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack_ptr);
 		exit(EXIT_FAILURE);
 	}
-	top = (*stack)->n;
+	top = (*stack_ptr)->n;
 	printf("%d\n", top);
 }
 
-/**
- * printTopC - prints the top char (pchar)
- * @stack: pointer to the stack mem address
- * @line_number: is the current line number
- */
-void printTopC(stack_t **stack, unsigned int line_number)
-{
-	stack_t *s_node = *stack;
 
-	if (c_node == NULL)
+
+/**
+ * pchar -> prints the top char (pchar)
+ * @stack_ptr: pointer to the stack mem address
+ * @l_num: is the current line number
+ *
+ * Return: Nothin
+ */
+void pchar(stack_t **stack_ptr, unsigned int l_num)
+{
+	stack_t *s_node = *stack_ptr;
+
+	if (s_node == NULL)
 	{
-		fprintf(stderr, "L%d can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d can't pchar, stack empty\n", l_num);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
-		exit(EXIT_FAIILURE);
+		free_stack(*stack_ptr);
+		exit(EXIT_FAILURE);
 	}
 	if (s_node->n > 127 || s_node->n < 0)
 	{
-		fprintf(stderr, "L%d can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d can't pchar, stack empty"N, l_num);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack_ptr);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", s_node->n);
 }
 
+
+
 /**
- * printTops - print the top string (pstr)
- * @stack: pointer to the stack mem address
- * @line_number: is the current line number
+ * pstr - print the top string (pstr)
+ * @stack_ptr: pointer to the stack mem address
+ * @l_num: is the current line number
+ *
+ * Return: Nothing
  */
-void printTops(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack_ptr, unsigned int l_num)
 {
-	stack_t *top_node = *stack;
-	(void)line_number;
+	stack_t *top_node = *stack_ptr;
+	(void)l_num;
 
 	while (top_node != NULL)
 	{
@@ -88,5 +103,5 @@ void printTops(stack_t **stack, unsigned int line_number)
 		printf("%c", top_node->n);
 		top_node = top_node->next;
 	}
-	print("\n");
+	printf(N);
 }

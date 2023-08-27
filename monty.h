@@ -18,6 +18,7 @@
 
 /***************** MACROS *************************************/
 #define DEL "\t\n"
+#define N "\n"
 
 /******************** STRUCTURES DECLARATIONS*******************
  * struct stac_s -> doubly linked list representation of a stack
@@ -75,14 +76,27 @@ extern global_rep global;
 
 
 /******************** CODE FUNCTIONS ***********************/
+
+/*action select function*/
 int op_select_fun(char *, stack_t **, unsigned int, FILE *);
+
+/*execution function*/
 void push_value(stack_t **, unsigned int);
 void addtp(stack_t **, int);
 void addlst(stack_t **, int);
-void print_stack(stack_t **stack, unsigned int line_number);
-void print_top(stack_t **stack, unsigned int line_number);
-void printTopC(stack_t **stack, unsigned int line_number);
-void printTops(stack_t **stack, unsigned int line_number);
+void delett(stack_t **, unsigned int);
+void nop(stack_t **, unsigned int);
+/**
+ * void pall
+ * void pint
+ * void pchar
+ */
+
+/*display function */
+void pall(stack_t **, unsigned int);
+void pint(stack_t **, unsigned int);
+void pchar(stack_t **, unsigned int);
+void pstr(stack_t **, unsigned int);
 
 /******************** ERROR MESSAGES ***********************/
 int malloc_failed(void);

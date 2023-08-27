@@ -12,17 +12,20 @@
 int op_select_fun(char *line_info, stack_t **stack_ptr, unsigned int line_num,
 	FILE *monty_file)
 {
-	global_rep global;
 	unsigned int idx = 0;
 	char *code_opt;
 
+	/** Lists of Actions to take */
 	instruction_t list_op[] = {
-		{"push", push_value},
+		{"push", push_value}, {"pall", pall}, {"pint", pint}, {"pchar", pchar},
+		{"pstr", pstr}, {"pop", delett}, {"nop", nop}
 	};
-	code_opt = strtok(line_info, DEL);
+
+
+	code_opt = strtok(line_info, "\n\t");
 	if (code_opt && code_opt[0] == '#')
 		return (0);
-	global.data_ptr = strtok(NULL, DEL);
+	global.data_ptr = strtok(NULL, "\n\t");
 
 	while (list_op[idx].opcode && code_opt)
 	{
@@ -38,6 +41,9 @@ int op_select_fun(char *line_info, stack_t **stack_ptr, unsigned int line_num,
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, code_opt);
 		fclose(monty_file);
 		free(line_info);
+		free_stack(*stack_ptr);
+		exit(EXIT_FAILURE);
 	}
 	return (1);
 }
+
