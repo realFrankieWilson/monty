@@ -70,15 +70,14 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/*action select function*/
+int op_select_fun(char *, stack_t **, unsigned int, FILE *filename);
 
-/******************* GLOBAL OPCODES **********************/
+/**global variable*/
 extern global_rep global;
 
 
 /******************** CODE FUNCTIONS ***********************/
-
-/*action select function*/
-int op_select_fun(char *, stack_t **, unsigned int, FILE *);
 
 /*execusion0 function*/
 void push_value(stack_t **, unsigned int);
@@ -90,12 +89,22 @@ void nop(stack_t **, unsigned int);
 /*execusion1*/
 void queue_f(stack_t **, unsigned int);
 void stack_f(stack_t **, unsigned int);
+void swaptp(stack_t **, unsigned int);
+void rotatetp(stack_t **, unsigned int);
+void rotatebtm(stack_t **, unsigned int);
 
 /*display function */
 void print_stk(stack_t **, unsigned int);
 void print_tp(stack_t **, unsigned int);
 void pchar(stack_t **, unsigned int);
 void pstr(stack_t **, unsigned int);
+
+/*math function*/
+void addmath(stack_t **, unsigned int);
+void submath(stack_t **, unsigned int);
+void modmath(stack_t **, unsigned int);
+void divmath(stack_t **, unsigned int);
+void mulmath(stack_t **, unsigned int);
 
 /******************** ERROR MESSAGES ***********************/
 int malloc_failed(void);

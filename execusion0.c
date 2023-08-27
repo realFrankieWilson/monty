@@ -61,15 +61,13 @@ void addtp(stack_t **stack_ptr, int push)
 	if (new_val == NULL)
 		exit(0);
 
-	if (front == NULL)
-	{
-		new_val->n = push;
-		new_val->next = *stack_ptr;
-		new_val->prev = NULL;
-		*stack_ptr = new_val;
-	}
-	else
+	if (front != NULL)
 		front->prev = new_val;
+
+	new_val->n = push;
+	new_val->next = *stack_ptr;
+	new_val->prev = NULL;
+	*stack_ptr = new_val;
 }
 
 
@@ -89,7 +87,7 @@ void addlst(stack_t **stack_ptr, int push)
 		malloc_failed();
 
 	new_val->n = push;
-	new_val->next = *stack_ptr;
+	new_val->next = NULL;
 
 	if (*stack_ptr == NULL)
 	{
