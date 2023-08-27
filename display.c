@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * pall -> print the stack like pall function
+ * print_stk -> print the stack like pall function
  * @stack_ptr: pointer to the mem direction of stack
  * @l_num: Number of actual line
  *
  * Return: Nothing
  */
-void pall(stack_t **stack_ptr, unsigned int l_num)
+void print_stk(stack_t **stack_ptr, unsigned int l_num)
 
 {
 	stack_t *display_node = NULL;
@@ -28,13 +28,13 @@ void pall(stack_t **stack_ptr, unsigned int l_num)
 
 
 /**
- * pint -> print the top element (pint)
+ * print_tp -> print the top element (pint)
  * @stack_ptr: pointer to the mem location of stack
  * @l_num: Number of actual line
  *
  * Return: Nothing
  */
-void pint(stack_t **stack_ptr, unsigned int l_num)
+void print_tp(stack_t **stack_ptr, unsigned int l_num)
 {
 	int top = 0;
 

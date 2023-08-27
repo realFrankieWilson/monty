@@ -17,8 +17,8 @@ int op_select_fun(char *line_info, stack_t **stack_ptr, unsigned int line_num,
 
 	/** Lists of Actions to take */
 	instruction_t list_op[] = {
-		{"push", push_value}, {"pall", pall}, {"pint", pint}, {"pchar", pchar},
-		{"pstr", pstr}, {"pop", delett}, {"nop", nop}
+		{"push", push_value}, {"pall", print_stk}, {"pint", print_tp}, {"pchar", pchar},
+		{"pstr", pstr}, {"pop", delett}, {"nop", nop}, {"queue", queue_f}
 	};
 
 

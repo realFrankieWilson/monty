@@ -80,21 +80,20 @@ extern global_rep global;
 /*action select function*/
 int op_select_fun(char *, stack_t **, unsigned int, FILE *);
 
-/*execution function*/
+/*execusion0 function*/
 void push_value(stack_t **, unsigned int);
 void addtp(stack_t **, int);
 void addlst(stack_t **, int);
 void delett(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
-/**
- * void pall
- * void pint
- * void pchar
- */
+
+/*execusion1*/
+void queue_f(stack_t **, unsigned int);
+void stack_f(stack_t **, unsigned int);
 
 /*display function */
-void pall(stack_t **, unsigned int);
-void pint(stack_t **, unsigned int);
+void print_stk(stack_t **, unsigned int);
+void print_tp(stack_t **, unsigned int);
 void pchar(stack_t **, unsigned int);
 void pstr(stack_t **, unsigned int);
 
