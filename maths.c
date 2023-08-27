@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * addTop - function to add
+ * addmath - function to add
  * @stack: is thepointer to the stacks mem address
  * @line_num2: is the actual line number
  */
-void addTop(stack_t **stack, unsigned int line_num2)
+void addmath(stack_t **stack, unsigned int line_num2)
 {
 	stack_t *ptr_node;
 	int counter = 0, add;
@@ -31,11 +31,11 @@ void addTop(stack_t **stack, unsigned int line_num2)
 }
 
 /**
- * sub_value - function to subtract
+ * submath - function to subtract
  * @stack: pointer to the stack's mem location
  * @line_num2: the actualline number
  */
-void sub_value(stack_t **stack, unsigned int line_num2)
+void submath(stack_t **stack, unsigned int line_num2)
 {
 	stack_t *ptr_node;
 	int subt, counter = 0;
@@ -51,7 +51,7 @@ void sub_value(stack_t **stack, unsigned int line_num2)
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_num2);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	ptr_node = *stack;
@@ -62,11 +62,11 @@ void sub_value(stack_t **stack, unsigned int line_num2)
 }
 
 /**
- * mul_value - function to multiply
+ * mulmath - function to multiply
  * @stack: pointer to the stacks memory location
  * @line_num2: the actual line num
  */
-void mul_value(stack_t **stack, unsigned int line_num2)
+void mulmath(stack_t **stack, unsigned int line_num2)
 {
 	stack_ t *ptr_node;
 	int mult, counter = 0;
@@ -82,7 +82,7 @@ void mul_value(stack_t **stack, unsigned int line_num2)
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_num2);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	ptr_node = *stack;
@@ -92,11 +92,11 @@ void mul_value(stack_t **stack, unsigned int line_num2)
 	free(ptr_node);
 }
 /**
- * div_value - function to divide
+ * divmath - function to divide
  * @stack: pointer to the mem location
  * @line_num2: the actual line num
  */
-void div_value(stack_t **stack, unsigned int line_num2)
+void divmath(stack_t **stack, unsigned int line_num2)
 {
 	stack_t *ptr_node;
 	int div_v, counter = 0;
@@ -121,7 +121,7 @@ void div_value(stack_t **stack, unsigned int line_num2)
 		fprintf(stderr, "L%d: division by zero\n", line_num2);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	div_v = ptr_node->next->n / ptr_node->n;
@@ -131,11 +131,11 @@ void div_value(stack_t **stack, unsigned int line_num2)
 }
 
 /**
- * mod_value - funtion to calculate the modulus
+ * modmath - funtion to calculate the modulus
  * @stack: the pointer to the memory of the stack
  * @line_num2: the actual line number
  */
-void mod_value(stack_t **stack, unsigned int line_num2)
+void modmath(stack_t **stack, unsigned int line_num2)
 {
 	stack_t *ptr_node;
 	int div, counter = 0;
@@ -151,7 +151,7 @@ void mod_value(stack_t **stack, unsigned int line_num2)
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_num2);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	ptr_node = *stack;
@@ -160,7 +160,7 @@ void mod_value(stack_t **stack, unsigned int line_num2)
 		fprintf(stderr, "L%d: division by zero\n", line_num2);
 		fclose(global.f_handler);
 		free(global.monty_line);
-		freePlates(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	div = ptr_node->next->n % ptr_node->n;
