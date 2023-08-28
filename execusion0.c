@@ -7,7 +7,7 @@
 */
 void push_value(stack_t **stack_ptr, unsigned int l_num)
 {
-	int push, idx = 0;
+	int push, idx = 0, i = 0;
 
 	if (global.data_ptr != NULL)
 	{
@@ -16,6 +16,8 @@ void push_value(stack_t **stack_ptr, unsigned int l_num)
 		for (; global.data_ptr[idx] != '\0'; idx++)
 		{
 			if (isdigit(global.data_ptr[idx]) == 0)
+				i = 1;
+			if (i == 1)
 			{
 				fprintf(stderr, "L%d: usage: push integer"N, l_num);
 				fclose(global.f_handler);
@@ -59,7 +61,7 @@ void addtp(stack_t **stack_ptr, int push)
 
 	new_val = malloc(sizeof(stack_t));
 	if (new_val == NULL)
-		exit(0);
+		malloc_failed();
 
 	if (front != NULL)
 		front->prev = new_val;
