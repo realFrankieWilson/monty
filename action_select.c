@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
-* op_select_fun -> Selects a function
+* op_select -> Selects a function
 * @line_info: words in line
 * @stack_ptr: pointer to the stack memory address
 * @l_num: current line number.

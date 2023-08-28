@@ -1,4 +1,4 @@
-void nop(stack_t **stack_ptr, unsigned int l_num)#include "monty.h"
+#include "monty.h"
 
 /**
 * free_stack -> Releases the memory use of the stack element
