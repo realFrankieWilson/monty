@@ -99,7 +99,7 @@ void addlst(stack_t **stack_ptr, int push)
 	while (tail->next != NULL)
 		tail = tail->next;
 	tail->next = new_val;
-	new_val->prev - tail;
+	new_val->prev = tail;
 }
 
 

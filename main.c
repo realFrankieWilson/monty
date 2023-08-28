@@ -1,4 +1,6 @@
 #include "monty.h"
+#define  _GNU_SOURCE
+#include <stdio.h>
 global_rep global;
 
 /**
@@ -11,7 +13,7 @@ global_rep global;
 int main(int argc, char **argv)
 {
 	FILE *file_handle;
-	char *line_info;
+	char *line_info = NULL;
 	size_t size = 0;
 	ssize_t line_content = 1;
 	stack_t *stack = NULL;
@@ -31,10 +33,9 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
-	while (line_content > 0)
+	while ((line_content = getline(&line_info, &size, file_handle)) > 0)
 	{
-		line_info = NULL;
-		line_content = getline(&line_info, &size, file_handle);
+		/*line_content = getline(&line_info, &size, file_handle);*/
 		global.monty_line = line_info;
 		l_num++;
 
@@ -44,4 +45,5 @@ int main(int argc, char **argv)
 	}
 	free_stack(stack);
 	fclose(file_handle);
+	return (0);
 }
