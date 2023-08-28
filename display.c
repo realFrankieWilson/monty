@@ -10,16 +10,18 @@
 void print_stk(stack_t **stack_ptr, unsigned int l_num)
 
 {
-	stack_t *display_node;
+	stack_t *display_node = NULL;
 	(void)l_num;
 
-	if (display_node == NULL)
-		return;
-
-	while (display_node)
+	if (!(stack_ptr == NULL || *stack_ptr == NULL))
 	{
-		printf("%d"N, display_node->n);
-		display_node = display_node->next;
+		display_node = *stack_ptr;
+
+		while (display_node)
+		{
+			printf("%d"N, display_node->n);
+			display_node = display_node->next;
+		}
 	}
 }
 
@@ -34,9 +36,7 @@ void print_stk(stack_t **stack_ptr, unsigned int l_num)
  */
 void print_tp(stack_t **stack_ptr, unsigned int l_num)
 {
-	int top = 0;
-
-	if (*stack_ptr == NULL)
+	if (!(*stack_ptr))
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty"N, l_num);
 		fclose(global.f_handler);
@@ -60,7 +60,7 @@ void pchar(stack_t **stack_ptr, unsigned int l_num)
 {
 	stack_t *s_node = *stack_ptr;
 
-	if (!s_node)
+	if (s_node)
 	{
 		fprintf(stderr, "L%d can't pchar, stack empty"N, l_num);
 		fclose(global.f_handler);
@@ -93,7 +93,7 @@ void pstr(stack_t **stack_ptr, unsigned int l_num)
 	stack_t *top_node = *stack_ptr;
 	(void)l_num;
 
-	while (top_node)
+	while (!top_node)
 	{
 		if (top_node->n <= 0 || top_node->n > 127)
 			break;
