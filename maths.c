@@ -15,7 +15,7 @@ void addmath(stack_t **stack_ptr, unsigned int l_num)
 	int len = 0, add;
 
 	new_node = *stack_ptr;
-	while (new_node != NULL)
+	while (new_node)
 	{
 		new_node = new_node->next;
 		len++;
@@ -52,7 +52,7 @@ void submath(stack_t **stack_ptr, unsigned int l_num)
 	int len = 0, sub;
 
 	new_node = *stack_ptr;
-	while (new_node != NULL)
+	while (new_node)
 	{
 		new_node = new_node->next;
 		len++;
@@ -68,6 +68,7 @@ void submath(stack_t **stack_ptr, unsigned int l_num)
 
 	}
 
+	new_node = *stack_ptr;
 	sub = new_node->next->n - new_node->n;
 	new_node->next->n = sub;
 	*stack_ptr = new_node->next;
@@ -89,7 +90,7 @@ void mulmath(stack_t **stack_ptr, unsigned int l_num)
 	int len = 0, mul;
 
 	new_node = *stack_ptr;
-	while (new_node != NULL)
+	while (new_node)
 	{
 		new_node = new_node->next;
 		len++;
@@ -105,6 +106,7 @@ void mulmath(stack_t **stack_ptr, unsigned int l_num)
 
 	}
 
+	new_node = *stack_ptr;
 	mul = new_node->next->n * new_node->n;
 	new_node->next->n = mul;
 	*stack_ptr = new_node->next;
@@ -126,7 +128,7 @@ void divmath(stack_t **stack_ptr, unsigned int l_num)
 	int len = 0, div;
 
 	new_node = *stack_ptr;
-	while (new_node != NULL)
+	while (new_node)
 	{
 		new_node = new_node->next;
 		len++;
@@ -142,6 +144,7 @@ void divmath(stack_t **stack_ptr, unsigned int l_num)
 
 	}
 
+	new_node = *stack_ptr;
 	div = new_node->next->n / new_node->n;
 	new_node->next->n = div;
 	*stack_ptr = new_node->next;
@@ -163,7 +166,7 @@ void modmath(stack_t **stack_ptr, unsigned int l_num)
 	int len = 0, mod;
 
 	new_node = *stack_ptr;
-	while (new_node != NULL)
+	while (new_node)
 	{
 		new_node = new_node->next;
 		len++;
@@ -179,7 +182,7 @@ void modmath(stack_t **stack_ptr, unsigned int l_num)
 
 	}
 
-	if (new_node->n == 0)
+	if (new_node->n)
 	{
 		fprintf(stderr, "L%d: division by zero"N, l_num);
 		fclose(global.f_handler);
