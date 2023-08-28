@@ -1,6 +1,4 @@
 #include "monty.h"
-#define  _GNU_SOURCE
-#include <stdio.h>
 global_rep global;
 
 /**
@@ -13,7 +11,7 @@ global_rep global;
 int main(int argc, char **argv)
 {
 	FILE *file_handle;
-	char *line_info = NULL;
+	char *line_info;
 	size_t size = 0;
 	ssize_t line_content = 1;
 	stack_t *stack = NULL;
@@ -21,7 +19,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		printf("USAGE: monty file"N);
 		exit(EXIT_FAILURE);
 	}
 	file_handle = fopen(argv[1], "r");
@@ -29,13 +27,14 @@ int main(int argc, char **argv)
 
 	if (file_handle == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s"N, argv[1]);
 		return (EXIT_FAILURE);
 	}
 
-	while ((line_content = getline(&line_info, &size, file_handle)) > 0)
+	while (line_content > 0)
 	{
-		/*line_content = getline(&line_info, &size, file_handle);*/
+		line_info = NULL;
+		line_content = getline(&line_info, &size, file_handle);
 		global.monty_line = line_info;
 		l_num++;
 
